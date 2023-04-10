@@ -1,5 +1,6 @@
 package com.javidan.fintech.util;
 
+import com.javidan.fintech.dto.request.AuthenticationRequestDTO;
 import com.javidan.fintech.dto.request.UserRequestDTO;
 import com.javidan.fintech.dto.response.CommonResponseDTO;
 import com.javidan.fintech.dto.response.Status;
@@ -21,6 +22,12 @@ public class DTOUtil {
         checkDTOInputInfo(userRequestDTO.getName());
         checkDTOInputInfo(userRequestDTO.getPassword());
         checkDTOInputInfo(userRequestDTO.getAccountRequestDTOList());
+    }
+
+    public void isValid(AuthenticationRequestDTO authenticationRequestDTO) {
+        logger.warn(authenticationRequestDTO.toString());
+        checkDTOInputInfo(authenticationRequestDTO.getPassword());
+        checkDTOInputInfo(authenticationRequestDTO.getPin());
     }
 
     private <T> void checkDTOInputInfo(T t) {

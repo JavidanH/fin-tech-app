@@ -1,6 +1,7 @@
 package com.javidan.fintech.controller;
 
 
+import com.javidan.fintech.dto.request.AuthenticationRequestDTO;
 import com.javidan.fintech.dto.request.UserRequestDTO;
 import com.javidan.fintech.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody UserRequestDTO userRequestDTO) {
         return new ResponseEntity<>(userService.saveUser(userRequestDTO), HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody AuthenticationRequestDTO authenticationRequestDTO){
+        return  new ResponseEntity<>(userService.loginUser(authenticationRequestDTO),HttpStatus.OK);
     }
 }
